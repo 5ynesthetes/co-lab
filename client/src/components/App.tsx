@@ -19,25 +19,25 @@ const App = () => {
 
   return (
     <div className={activeComponent === 'feed' ? 'feed-open' : ''}>
-    <Router>
-      <Navbar activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login/*' element={<LoginButton />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/profile/:userId' element={<Profile />} />
-          <Route path='/logout' element={<LogoutButton />} />
-          <Route path='/stories/:roomId' element={<StoryBook />} />
-          <Route path='/music' element={<Ear />} />
-          <Route path='/visualart/:roomId' element={<VisualArt />} />
-          <Route path='/sculpture/:roomId' element={<Sculpture />} />
-          <Route path='/messages' element={<Inbox />} />
-          <Route path='/feed' element={<Feed />} />
-          <Route path='/trimmer' element={<Trimmer />} />
-        </Routes>
-      </Suspense>
-    </Router>
+      <Router>
+        <Navbar activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
+        <Suspense fallback={<h1 align='center'>Loading...</h1>}>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login/*' element={<LoginButton />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/profile/:userId' element={<Profile />} />
+            <Route path='/logout' element={<LogoutButton />} />
+            <Route path='/stories/:roomId' element={<StoryBook />} />
+            <Route path='/music' element={<Ear />} />
+            <Route path='/visualart/:roomId' element={<VisualArt />} />
+            <Route path='/sculpture/:roomId' element={<Sculpture />} />
+            <Route path='/messages' element={<Inbox />} />
+            <Route path='/feed' element={<Feed />} />
+            <Route path='/trimmer' element={<Trimmer />} />
+          </Routes>
+        </Suspense>
+      </Router>
     </div>
   );
 }
