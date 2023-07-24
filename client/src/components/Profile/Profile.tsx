@@ -27,7 +27,6 @@ const ProfilePicContainer = styled.div`
   position: relative;
   width: 100%;
   height: 15vw;
-  margin-top: 10px;
   object-fit: cover;
   object-position: center;
   display: flex;
@@ -88,8 +87,7 @@ const Name = styled.div`
 
 const ProfilePic = styled.img`
   display: block;
-  height: 12.5vw;
-  margin-top: 10px;
+  width: 83%;
   object-fit: cover;
   object-position: center;
   clip-path: circle();
@@ -127,6 +125,7 @@ const FriendListContainer = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 20px;
 `;
 
 const FriendLink = styled.a`
