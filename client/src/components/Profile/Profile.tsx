@@ -456,7 +456,6 @@ const Profile: React.FC = () => {
                   (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
                 ).map((art) => {
                   if (art.type) {
-                    console.log(art)
                     return (
                       <ArtItem
                         key={art.id}

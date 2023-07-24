@@ -172,9 +172,9 @@ const Thread = ({ userId, receiverId, userList, setUserList }) => {
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
               />
-              <STTButton>
+              {/* <STTButton>
                 <STT updateTranscript={updateContentWithTranscript} />
-              </STTButton>
+              </STTButton> */}
             </TextInputContainer>
             <SendButton onClick={sendMessage}>
               <FontAwesomeIcon icon={faPaperPlane} size='lg' />
