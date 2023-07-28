@@ -242,12 +242,6 @@ io.on('connection', socket => {
     io.to(roomId).emit('titleColorChanged', { color, storyId });
   });
 
-  // // Handle key press event
-  // socket.on('keyPress', (key: string, roomId: string) => {
-  //   // Broadcast the key press to all participants in the same room
-  //   socket.to(roomId).emit('keyPress', key);
-  // });
-
   // VISUAL ART
   socket.on('sendUserInfo', ({ userId, picture, roomId }) => {
     const roomCollaborators = collaboratorsMap.get(roomId) || new Map();
