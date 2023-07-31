@@ -366,7 +366,7 @@ const StoryBook: React.FC = () => {
     const fetchDefaultStory = async () => {
       const res = await axios.get('/api/stories');
       const defaultStory = res.data.filter((story: Story) => {
-        return story.title === 'Instructions' && story.originalCreatorId === 'fakeID';
+        return story.title === 'Instructions';
       })
       setSelectedStory(defaultStory[0]);
     };

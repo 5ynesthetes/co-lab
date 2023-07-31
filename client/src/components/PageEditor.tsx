@@ -3,7 +3,42 @@ import STT from './STT';
 import '../styles.css';
 import { FaSave, FaTimesCircle, FaVolumeUp, FaEraser } from 'react-icons/fa';
 import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
+import styled from 'styled-components';
 
+const StyledSaveIcon = styled(FaSave)`
+  color: white;
+  &:hover {
+    color: #8b88b5;
+  }
+`;
+
+const StyledEraserIcon = styled(FaEraser)`
+  color: white;
+  &:hover {
+    color: #8b88b5;
+  }
+`;
+
+const StyledVolumeIcon = styled(FaVolumeUp)`
+  color: white;
+  &:hover {
+    color: #8b88b5;
+  }
+`;
+
+const StyledTimesCircleIcon = styled(FaTimesCircle)`
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  color: #3d3983;
+  background-color: white;
+  border-radius: 100%;
+  padding: 3px;
+
+  &:hover {
+    color: #8b88b5;
+  }
+`;
 interface Page {
   id?: number;
   page_number: number;
@@ -71,7 +106,7 @@ const PageEditor: React.FC<PageEditorProps> = ({ page, onSave, onCancel, roomId 
       onClick={ onClick }
       style={{ top: '14px', fontSize: '34px', background: 'transparent', border: 'none', cursor: 'pointer', color: 'white' }}
     >
-      <FaSave />
+      <StyledSaveIcon />
     </button>
   );
 
@@ -80,7 +115,7 @@ const PageEditor: React.FC<PageEditorProps> = ({ page, onSave, onCancel, roomId 
       onClick={onClick}
       style={{ top: '14px', fontSize: '34px', background: 'transparent', border: 'none', cursor: 'pointer', color: 'white' }}
     >
-      <FaEraser />
+      <StyledEraserIcon />
     </button>
   );
 
@@ -90,7 +125,7 @@ const PageEditor: React.FC<PageEditorProps> = ({ page, onSave, onCancel, roomId 
         onClick={onSpeakClick}
         style={{ top: '14px', fontSize: '34px', background: 'transparent', border: 'none', cursor: 'pointer', color: 'white' }}
       >
-        <FaVolumeUp />
+         <StyledVolumeIcon />
       </button>
     </div>
   );
@@ -119,16 +154,7 @@ const PageEditor: React.FC<PageEditorProps> = ({ page, onSave, onCancel, roomId 
             style={{ width: '300px', height: '400px', padding: '15px' }}
           />
         </GrammarlyEditorPlugin>
-        <FaTimesCircle
-          style={{
-            position: 'absolute',
-            top: '-25px',
-            right: '-25px',
-            color: '#3d3983',
-            backgroundColor: 'white',
-            borderRadius: '100%',
-            padding: '3px'
-          }}
+        <StyledTimesCircleIcon
           size={30}
           onClick={ handleCancel }
         />
@@ -139,9 +165,9 @@ const PageEditor: React.FC<PageEditorProps> = ({ page, onSave, onCancel, roomId 
         display: 'flex',
         gap: '10px',
       }}>
-          <SaveButton onClick={handleSave} />
-          <ClearButton onClick={handleClearContent} />
-        <TTYButton onSpeakClick={handleSpeakClick} updateTranscript={updateContentWithTranscript} />
+          <SaveButton onClick={ handleSave } />
+          <ClearButton onClick={ handleClearContent } />
+        <TTYButton onSpeakClick={ handleSpeakClick } updateTranscript={ updateContentWithTranscript } />
         <STT updateTranscript={ updateContentWithTranscript } />
       </div>
     </div>

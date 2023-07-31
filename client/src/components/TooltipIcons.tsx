@@ -5,6 +5,7 @@ import '../styles.css';
 interface IconProps {
   size?: number;
   className?: string;
+  color?: string;
 }
 interface TooltipIconProps {
   children?: React.ReactNode;
@@ -19,13 +20,16 @@ interface TooltipIconProps {
 
 const TooltipIcon: React.FC<TooltipIconProps> = ({ icon: Icon, tooltipText, handleClick, style }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [color, setColor] = useState('');
 
   const handleMouseEnter = () => {
     setIsHovered(true);
+    setColor('#8b88b5');
   }
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+    setColor('');
   }
 
   return (
@@ -35,7 +39,7 @@ const TooltipIcon: React.FC<TooltipIconProps> = ({ icon: Icon, tooltipText, hand
       onClick={ handleClick }
       style={{ ...style, position: 'relative' }}
     >
-      <Icon size={30} />
+      <Icon size={30} color={ color } />
       {isHovered && <div className="tooltip-text">{ tooltipText }</div>}
     </div>
   );

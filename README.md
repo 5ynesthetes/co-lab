@@ -1,7 +1,6 @@
 # **co-lab**
 co-lab is an application that brings artists together to collaborate on artistic projects like 3D sculpting, musical expression, story writing, and visual art. It's an experience that is designed to be shared with friends and the community. What problem does this project solve?
 
- [Markdown Info](https://www.w3schools.io/file/markdown-emphasis/) for Bryan, Emmy, and Marvas
 
 **Table of Contents**
 * [Getting Started](#start)
@@ -101,7 +100,7 @@ Collaborative Story Writing Experience:
 <a id=colab></a>
 #### **How To Collaborate**
 
-explanation of how to use PeerJS + other software like socket.io/quillJS/ShareDB
+explanation of how to use PeerJS + other software like socket.io/ShareDB
 
 <a id=contribs></a>
 #### **Contributions**

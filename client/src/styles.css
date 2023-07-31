@@ -434,22 +434,5 @@ div:hover>.tooltip-text {
   }
 }
 
-.color-picker {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20vh;
-}
 
-.color-wheel {
-  appearance: none;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  height: 100px;
-  width: 100px;
-  padding: 30px;
-  box-sizing: border-box;
-  background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
-}
 

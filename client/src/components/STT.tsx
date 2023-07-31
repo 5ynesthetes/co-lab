@@ -1,6 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import '../styles.css';
 import { FaMicrophoneAlt } from 'react-icons/fa';
+import styled from 'styled-components';
+
+const StyledMicrophoneIcon = styled(FaMicrophoneAlt)`
+  color: white;
+  &:hover {
+    color: #8b88b5;
+  }
+`;
 
 interface STTProps {
   updateTranscript: (newTranscript: string) => void;
@@ -40,7 +48,7 @@ const STT: React.FC<STTProps> = ({ updateTranscript }) => {
       onClick={onClick}
       style={{ marginTop: '2px', background: 'transparent', border: 'none', cursor: 'pointer', color: 'white', fontSize: '30px' }}
     >
-      <FaMicrophoneAlt />
+      <StyledMicrophoneIcon />
     </button>
   );
 

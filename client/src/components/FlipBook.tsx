@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import PageEditor from "./PageEditor";
 import TitlePage from './TitlePage';
 import TooltipIcon from "./TooltipIcons";
+import '../styles.css';
 
 const PageContainer = styled.div`
   width: 500px;
@@ -28,6 +29,20 @@ const Pages = styled.div`
   box-sizing: border-box;
   text-align: center;
 `;
+
+const StyledVolumeIcon = styled(FaVolumeUp)`
+  color: #3d3983;
+  background-color: white;
+  border-radius: 50%;
+  margin: 10px;
+  padding: 3px;
+  height: 30px;
+  width: 30px;
+  &:hover {
+    color: #8b88b5;
+  }
+`;
+
 
 interface Page {
   id?: number;
@@ -210,27 +225,16 @@ const FlipBook: React.FC<FlipBookProps> = ({ story, selectedStoryPages, fetchPag
                     padding: '4px',
                     height: '30px',
                     marginTop: '5px',
-                    width: '30px'
+                    width: '30px',
                   }}
                 />
               )}
-              <div onClick={(e: React.MouseEvent) => {
-                e.stopPropagation();
-                handleSpeakClick(page.content);
-              }}>
-                <FaVolumeUp
-                  style={{
-                    color: '#3d3983',
-                    backgroundColor: 'white',
-                    borderRadius: '50%',
-                    margin: '10px',
-                    padding: '3px',
-                    height: '30px',
-                    width: '30px'
-                  }}
-                  size={30}
-                />
-              </div>
+            <div onClick={(e: React.MouseEvent) => {
+              e.stopPropagation();
+              handleSpeakClick(page.content);
+            }}>
+              <StyledVolumeIcon size={30} />
+            </div>
             </div>
             <Pages data-density="hard">
               {page.content}

@@ -37,7 +37,13 @@ const StyledSlider = styled(Slider)`
     width: 10px;
     height: 10px;
   }
+`;
 
+const StyledTrashIcon = styled(FaTrash)`
+  color: white;
+  &:hover {
+    color: #8b88b5;
+  }
 `;
 
 const StoryCarousel: React.FC<CarouselProps> = ({ items, handleStoryClick, handleStoryHover, deleteStory, user }) => {
@@ -71,7 +77,7 @@ const StoryCarousel: React.FC<CarouselProps> = ({ items, handleStoryClick, handl
         marginTop: '7px',
       }}
     >
-      <FaTrash size={20} color="white" />
+      <StyledTrashIcon size={20} />
     </button>
   );
 
@@ -84,41 +90,52 @@ const StoryCarousel: React.FC<CarouselProps> = ({ items, handleStoryClick, handl
           if (story.isPrivate && !userIsCreator) {
             return null;
           }
-            return (
+          return (
+            <div
+              key={index}
+              onClick={() => handleStoryClick(story)}
+              onMouseEnter={() => handleStoryHover(story)}
+              style={{
+                marginBottom: '20px',
+                marginRight: '10px',
+                color: '#3d3983',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+                cursor: 'pointer',
+                transform: current === index ? 'scale(1.05)' : 'scale(1)',
+                transition: 'transform .5s',
+                height: '100%',
+              }}
+            >
               <div
-                key={index}
-                onClick={() => handleStoryClick(story)}
-                onMouseEnter={() => handleStoryHover(story)}
                 style={{
-                  marginBottom: '20px',
-                  marginRight: '10px',
-                  color: '#3d3983',
+                  width: '80px',
+                  height: '100px',
+                  borderRadius: '5px',
                   display: 'flex',
-                  flexDirection: 'column',
                   alignItems: 'center',
-                  justifyContent: 'flex-start',
-                  cursor: 'pointer',
-                  transform: current === index ? 'scale(1.05)' : 'scale(1)',
-                  transition: 'transform .5s',
-                  height: '100%',
+                  justifyContent: 'center',
+                  backgroundColor: story.coverImage ? 'transparent' : 'white',
+                  marginLeft: '80px',
+                  marginTop: '30px',
                 }}
               >
-                  <div
+                {story.coverImage ? (
+                  <img
+                    src={ story.coverImage }
+                    alt={ story.title }
                     style={{
                       width: '80px',
                       height: '100px',
-                      borderRadius: '5px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backgroundColor: story.coverImage ? 'transparent' : 'white',
-                      marginLeft: '80px',
-                      marginTop: '30px',
+                      objectFit: 'cover',
                     }}
-                  >
-                  {story.coverImage ? (
+                  />
+                ) : (
+                  <div style={{ fontSize: '0.8em', color: 'black', textAlign: 'center' }}>
                     <img
-                      src={ story.coverImage }
+                      src={'https://res.cloudinary.com/dtnq6yr17/image/upload/v1690048298/book_wr0o6r.png'}
                       alt={ story.title }
                       style={{
                         width: '80px',
@@ -126,37 +143,27 @@ const StoryCarousel: React.FC<CarouselProps> = ({ items, handleStoryClick, handl
                         objectFit: 'cover',
                       }}
                     />
-                  ) : (
-                    <div style={{ fontSize: '0.8em', color: 'black', textAlign: 'center' }}>
-                      <img
-                        src={'https://res.cloudinary.com/dtnq6yr17/image/upload/v1690048298/book_wr0o6r.png'}
-                        alt={ story.title }
-                        style={{
-                          width: '80px',
-                          height: '100px',
-                          objectFit: 'cover',
-                        }}
-                      />
-                    </div>
-                  )}
-                </div>
-                <div style={{ marginTop: '10px', fontSize: '0.8em', color: 'white', textAlign: 'center', marginBottom: '30px' }}>
-                  {story.title}
-                </div>
-                { (
-                  <div
-                    style={{
-                      top: '-20px',
-                      height: '35px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                    <DeleteStoryButton onClick={() => deleteStory(story.id!, story.originalCreatorId!)} />
                   </div>
                 )}
               </div>
-            );
+              <div style={{ marginTop: '10px', fontSize: '0.8em', color: 'white', textAlign: 'center', marginBottom: '30px' }}>
+                {story.title}
+              </div>
+              {userIsCreator && (
+                <div
+                  style={{
+                    top: '-20px',
+                    height: '35px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <DeleteStoryButton onClick={() => deleteStory(story.id!, story.originalCreatorId!)} />
+                </div>
+              )}
+            </div>
+          );
         })}
       </StyledSlider>
     </div>
