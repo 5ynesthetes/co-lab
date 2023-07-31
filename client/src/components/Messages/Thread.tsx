@@ -33,14 +33,12 @@ interface Message {
 }
 
 const TimestampSender = styled.div`
-  align-self: flex-end;
   text-align: right;
   margin-left: auto;
   font-size: 12px;
 `;
 
 const TimestampRecipient = styled.div`
-  align-self: flex-start;
   margin-right: auto;
   font-size: 12px;
 `;

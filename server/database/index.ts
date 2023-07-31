@@ -257,7 +257,6 @@ const initialize = async () => {
       })
     );
     console.log('Tables successfully created! Auto-increment sequences reset based on seed data');
-    // await createSeedData();
   } catch (err) {
     console.error('Error creating tables or resetting auto-increment sequences:', err);
   }

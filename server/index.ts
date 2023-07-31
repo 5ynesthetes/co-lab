@@ -124,7 +124,6 @@ app.put('/api/stories/:id/collaborators', async (req, res) => {
   try {
     const storyId = req.params.id;
     const newCollaboratorId = req.body.collaborator;
-    console.log(newCollaboratorId);
     const story = await Story.findByPk(storyId);
     if (!story) {
       res.status(404).send('Story not found');
@@ -241,12 +240,6 @@ io.on('connection', socket => {
   socket.on('titleColorChanged', ({ color, storyId, roomId }) => {
     io.to(roomId).emit('titleColorChanged', { color, storyId });
   });
-
-  // // Handle key press event
-  // socket.on('keyPress', (key: string, roomId: string) => {
-  //   // Broadcast the key press to all participants in the same room
-  //   socket.to(roomId).emit('keyPress', key);
-  // });
 
   // VISUAL ART
   socket.on('sendUserInfo', ({ userId, picture, roomId }) => {
