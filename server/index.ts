@@ -124,7 +124,6 @@ app.put('/api/stories/:id/collaborators', async (req, res) => {
   try {
     const storyId = req.params.id;
     const newCollaboratorId = req.body.collaborator;
-    console.log(newCollaboratorId);
     const story = await Story.findByPk(storyId);
     if (!story) {
       res.status(404).send('Story not found');

@@ -175,6 +175,9 @@ const seedData = {
       "createdAt": "2023-07-06T00:40:40.883Z",
       "updatedAt": "2023-07-06T00:40:40.883Z",
       "artworkId": 21,
+      "isPrivate": false,
+      "collaborators": [],
+      "titleColor": '#000000',
       "originalCreatorId": "google-oauth2|101120179825803660978"
     },
     {
@@ -185,6 +188,9 @@ const seedData = {
       "createdAt": "2023-07-06T00:43:34.000Z",
       "updatedAt": "2023-07-06T00:43:34.000Z",
       "artworkId": 28,
+      "isPrivate": false,
+      "collaborators": [],
+      "titleColor": '#000000',
       "originalCreatorId": "google-oauth2|113968775196154789679"
     },
     {
@@ -195,7 +201,21 @@ const seedData = {
       "createdAt": "2023-07-06T18:08:39.172Z",
       "updatedAt": "2023-07-06T18:08:39.172Z",
       "artworkId": 38,
+      "isPrivate": false,
+      "collaborators": [],
+      "titleColor": '#000000',
       "originalCreatorId": "google-oauth2|110884329445221019482"
+    },
+    {
+      "id": 100,
+      "title": 'Instructions',
+      "coverImage": 'https://res.cloudinary.com/dhin8tgv1/image/upload/v1689102895/ifjlfroavjrpigqbzyrm.webp',
+      "titleColor": '#000000',
+      "originalCreatorId": "google-oauth2|108908358062767655933",
+      "numberOfPages": 3,
+      "isPrivate": false,
+      "collaborators": [],
+      "artworkId": 100
     }
   ],
   "artwork": [
@@ -518,6 +538,13 @@ const seedData = {
       "id": 68,
       "type": "visual art",
       "userId": "google-oauth2|104097737553983109767",
+      "createdAt": "2023-07-22T22:10:36.647Z",
+      "updatedAt": "2023-07-22T22:10:36.647Z"
+    },
+    {
+      "id": 100,
+      "type": "story",
+      "userId": "google-oauth2|108908358062767655933",
       "createdAt": "2023-07-22T22:10:36.647Z",
       "updatedAt": "2023-07-22T22:10:36.647Z"
     }
@@ -1811,7 +1838,25 @@ const seedData = {
       "createdAt": "2023-07-21T18:33:27.148Z",
       "updatedAt": "2023-07-21T18:33:27.148Z",
       "storyId": null
-    }
+    },
+    {
+      "id": 19,
+      "page_number": 1,
+      "content": 'There are several different features designed to help craft a story. From the create a new story button above, you can add a title, a cover image, and set the story as private or public (default). The title color can be adjusted using the magic wand on the tool bar above. This will allow you to customize your title text for your cover image. The cover image cannot be changed once it is set so be careful to verify you have the correct image in the drag and drop area.',
+      "storyId": 100,
+    },
+    {
+      "id": 20,
+      "page_number": 2,
+      "content": 'An important feature is the page editor, designed to assist with writing a story. Click on a page to open the page editor. From there, you will see options to save text to the page, clear the content of the page editor, read the content of the page editor, and speech-to-text. Additionally, there is a Grammarly assistant that will help with grammar and spelling suggestions. So you can worry less about mistakes and more about writing.',
+      "storyId": 100,
+    },
+    {
+      "id": 21,
+      "page_number": 3,
+      "content": 'Invite your friends to come write a story with you. You can edit the story in the page editor together and talk about your ideas in the shared room. Check out some of our awesome public stories below if you are looking for inspiration. Otherwise, have fun and happy writing!',
+      "storyId": 100,
+    },
   ]
 }
 

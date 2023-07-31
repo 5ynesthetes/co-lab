@@ -4,83 +4,14 @@ import axios from 'axios';
 import { Socket } from 'socket.io-client';
 import { SocketContext } from './Inbox';
 import Thread from './Thread';
-import styled from 'styled-components';
-// import { FaCogs } from 'react-icons/fa';
-
-const SidebarContainer = styled.div`
-  display: flex;
-  width: 100%;
-`;
-
-const Inbox = styled.h1`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-`;
-
-const MessageList = styled.div`
-  flex: 1;
-  width: 25%;
-  height: 67vh;
-  overflow-y: auto;
-  scrollbar: hidden;
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
-  &::-webkit-scrollbar {
-    width: 0;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-`;
-
-const ThreadContainer = styled.div`
-  flex: 3;
-  width: 75%;
-  padding: 20px;
-  max-height: 100%;
-  overflow-y: auto;
-`;
-
-const ConfigButton = styled.button`
-  color: white;
-  font-size: 2.5rem;
-  position: fixed;
-  right: 125px;
-  top: 655px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-`;
-
-const ClickableName = styled.li`
-  display: flex;
-  align-items: center;
-  font-size: 20px;
-  cursor: pointer;
-`;
-
-const UserImage = styled.img<{ isSelected: boolean }>`
-  width: 40px;
-  height: 40px;
-  clip-path: circle();
-  margin: 5px 10px 5px 65px;
-  border: 4px solid transparent;
-  border-radius: 50%;
-
-  ${({ isSelected }) =>
-    isSelected &&
-    `
-    border-color: white;
-  `}
-`;
+import {
+  SidebarContainer,
+  Inbox,
+  MessageList,
+  ThreadContainer,
+  ClickableName,
+  UserImage
+} from '../../styled'
 
 const Sidebar = () => {
   const socket = useContext(SocketContext) as Socket;

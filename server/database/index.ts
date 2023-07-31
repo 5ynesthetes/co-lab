@@ -246,7 +246,7 @@ Pages.belongsTo(Story, { foreignKey: 'storyId' });
 const initialize = async () => {
   try {
     await sequelize.sync({ alter: true });
-    const tablesToReset = ['users', 'artwork', 'messages', 'visualart', 'music', 'stories', 'pages', 'sculptures'];
+    const tablesToReset = ['artwork', 'messages', 'visualart', 'music', 'stories', 'pages', 'sculptures'];
     await Promise.all(
       tablesToReset.map(async (table) => {
         const sequenceName = `"${table}_id_seq"`;
@@ -257,7 +257,6 @@ const initialize = async () => {
       })
     );
     console.log('Tables successfully created! Auto-increment sequences reset based on seed data');
-    await createSeedData();
   } catch (err) {
     console.error('Error creating tables or resetting auto-increment sequences:', err);
   }

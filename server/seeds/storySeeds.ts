@@ -17,7 +17,7 @@ const createSeedData = async () => {
         title: 'Instructions',
         coverImage: 'https://res.cloudinary.com/dhin8tgv1/image/upload/v1689102895/ifjlfroavjrpigqbzyrm.webp',
         titleColor: '#000000',
-        originalCreatorId: 'fakeID',
+        originalCreatorId: "google-oauth2|108908358062767655933",
         numberOfPages: 3,
         isPrivate: false,
         collaborators: [],
