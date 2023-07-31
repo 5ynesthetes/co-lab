@@ -1,14 +1,10 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import axios from 'axios';
-import TTS from '../TTS';
-import STT from '../STT';
 import { formatDistanceToNow } from 'date-fns';
-import { FaVolumeUp } from 'react-icons/fa';
 import { Socket } from 'socket.io-client';
 import { SocketContext } from './Inbox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
-import styled from 'styled-components';
 import {
   ConversationContainer,
   BubbleContainer,
@@ -16,9 +12,11 @@ import {
   RecipientBubble,
   TextInput,
   TextInputContainer,
-  STTButton,
   SendMessageContainer,
-  SendButton
+  SendButton,
+  TimestampSender,
+  TimestampRecipient,
+  InviteLink
 } from '../../styled';
 interface Message {
   id: number;
@@ -31,21 +29,6 @@ interface Message {
     name: string;
   }
 }
-
-const TimestampSender = styled.div`
-  text-align: right;
-  margin-left: auto;
-  font-size: 12px;
-`;
-
-const TimestampRecipient = styled.div`
-  margin-right: auto;
-  font-size: 12px;
-`;
-
-const InviteLink = styled.a`
-  color: inherit;
-`;
 
 const Thread = ({ userId, receiverId, userList, setUserList }) => {
   const socket = useContext(SocketContext) as Socket;
@@ -80,20 +63,6 @@ const Thread = ({ userId, receiverId, userList, setUserList }) => {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       sendMessage(e);
-    }
-  };
-
-  const updateContentWithTranscript = (transcript: string) => {
-    setMessage((prevMessage) => prevMessage + ' ' + transcript);
-  };
-
-  const handleSpeakClick = (msg: string) => {
-    if (msg) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(msg);
-      window.speechSynthesis.speak(utterance);
-    } else {
-      console.error('Speech synthesis is not supported in this browser.');
     }
   };
 
@@ -170,9 +139,6 @@ const Thread = ({ userId, receiverId, userList, setUserList }) => {
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
               />
-              {/* <STTButton>
-                <STT updateTranscript={updateContentWithTranscript} />
-              </STTButton> */}
             </TextInputContainer>
             <SendButton onClick={sendMessage}>
               <FontAwesomeIcon icon={faPaperPlane} size='lg' />

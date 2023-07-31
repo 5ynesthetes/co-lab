@@ -5,7 +5,7 @@ import Modal from '../Modal';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { io, Socket } from 'socket.io-client';
-import Peer, { MediaConnection } from 'peerjs';
+import Peer from 'peerjs';
 import { v4 as generatePeerId } from 'uuid';
 
 export const socket = io('/');
@@ -18,7 +18,6 @@ const VisualArt: React.FC = () => {
   const [peerId, setPeerId] = useState('');
   const [backgroundColor, setBackgroundColor] = useState('#3d3983');
   const [currentCollaborators, setCurrentCollaborators] = useState<Array<Object>>([]);
-  const [userImages, setUserImages] = useState<Array<Object>>([]);
   const [friendList, setFriendList] = useState<Object[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [showBgColorPicker, setShowBgColorPicker] = useState(false);
@@ -86,18 +85,6 @@ const VisualArt: React.FC = () => {
     socket.on('userJoined', (userId) => {
       console.log(`User ${userId} joined the room`);
     });
-
-    // socket.on('disconnectUser', userId => {
-    //   if (peers[userId]) {
-    //     peers[userId].close();
-    //   }
-    // })
-
-    // return () => {
-    //   socket.emit('disconnectUser', peerId, roomId);
-    //   socket.disconnect();
-    //   peer.disconnect();
-    // };
   }, []);
 
   useEffect(() => {
